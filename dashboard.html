@@ -35,10 +35,6 @@
             flex-direction: column;
             overflow-x: hidden;
         }
-        .logo{
-            width: 100px;
-            height: auto;
-        }
 
         .ambient-bg {
             position: fixed; inset: 0; z-index: -1;
@@ -67,6 +63,7 @@
         }
         .brand-logo { font-family: 'Oswald'; font-size: 1.8rem; letter-spacing: -1px; }
         .brand-logo span { color: transparent; -webkit-text-stroke: 1px white; }
+        .logo { width: 100px; height: auto; }
         
         .top-bar-right { display: flex; align-items: center; gap: 16px; }
         .operator-badge {
@@ -433,7 +430,7 @@
             <div class="modal-title">Inserisci Codice</div>
             <div class="modal-sub">Digita il codice UUID del biglietto</div>
             <input type="text" id="ticketCode" class="input-field"
-                placeholder="FG-XXXXXX oppure UUID" maxlength="36"
+                placeholder="RP-XXXXXX oppure UUID" maxlength="36"
                 autocomplete="off" autocapitalize="characters" spellcheck="false">
             <button class="btn-action" id="verifyBtn">
                 <span class="material-symbols-outlined">verified</span>
@@ -455,10 +452,10 @@
     const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
     const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-    const FG_REGEX   = /^FG-[A-Z0-9]{4,10}$/i;
+    const RP_REGEX   = /^RP-[A-Z0-9]{4,10}$/i;
 
     function isCodiceValido(c) {
-        return UUID_REGEX.test(c) || FG_REGEX.test(c);
+        return UUID_REGEX.test(c) || RP_REGEX.test(c);
     }
 
     // =============================================
@@ -619,7 +616,7 @@
                     if (isVerifying || (now - lastScanTime) < SCAN_COOLDOWN) return;
 
                     const codice = decodedText.trim().toUpperCase();
-                    if (/^FG-[A-Z0-9]+$/.test(codice)) {
+                    if (/^RP-[A-Z0-9]+$/.test(codice)) {
                         lastScanTime = now;
                         isVerifying = true;
                         verificaBiglietto(codice, resultEl);
