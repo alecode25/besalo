@@ -38,17 +38,17 @@
 
         .ambient-bg {
             position: fixed; inset: 0; z-index: -1;
-            background: 
+            background:
                 radial-gradient(circle at 10% 10%, rgba(0, 102, 255, 0.14), transparent 40%),
                 radial-gradient(circle at 90% 90%, rgba(0, 60, 200, 0.09), transparent 40%),
                 radial-gradient(circle at 50% 50%, rgba(0, 30, 100, 0.06), transparent 60%);
         }
-        .noise { 
-            position: fixed; inset: 0; 
-            background: url('https://grainy-gradients.vercel.app/noise.svg'); 
-            opacity: 0.18; 
-            pointer-events: none; 
-            z-index: -1; 
+        .noise {
+            position: fixed; inset: 0;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.18;
+            pointer-events: none;
+            z-index: -1;
         }
 
         /* ─── TOP BAR ─── */
@@ -64,7 +64,7 @@
         .brand-logo { font-family: 'Oswald'; font-size: 1.8rem; letter-spacing: -1px; }
         .brand-logo span { color: transparent; -webkit-text-stroke: 1px white; }
         .logo { width: 100px; height: auto; }
-        
+
         .top-bar-right { display: flex; align-items: center; gap: 16px; }
         .operator-badge {
             font-size: 0.7rem;
@@ -86,34 +86,214 @@
         /* ─── CONTAINER ─── */
         .container {
             flex: 1;
-            max-width: 600px;
+            max-width: 700px;
             width: 100%;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        .header-section { text-align: center; margin-bottom: 40px; }
-        .header-section p { 
-            color: var(--primary); 
-            text-transform: uppercase; 
-            font-weight: 700; 
-            letter-spacing: 3px; 
-            font-size: 0.7rem; 
-            margin-bottom: 10px; 
+        .header-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
         }
-        .header-section h1 { font-family: 'Oswald'; font-size: 2.5rem; text-transform: uppercase; }
+        .header-section-left p {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 3px;
+            font-size: 0.7rem;
+            margin-bottom: 6px;
+        }
+        .header-section-left h1 { font-family: 'Oswald'; font-size: 2rem; text-transform: uppercase; }
 
-        /* ─── OPTION CARDS ─── */
-        .options-grid { display: grid; gap: 20px; }
+        /* ─── SCAN BUTTON ─── */
+        .btn-scan {
+            display: flex; align-items: center; gap: 8px;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid var(--border-blue);
+            border-radius: 14px;
+            padding: 12px 20px;
+            color: var(--primary);
+            font-family: 'Raleway';
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .btn-scan:hover {
+            background: rgba(0, 102, 255, 0.18);
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.2);
+        }
+
+        /* ─── REGISTRATION LIST ─── */
+        .reg-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .reg-item {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: var(--transition);
+            animation: fadeIn 0.3s ease;
+        }
+        .reg-item:hover {
+            border-color: var(--border-blue);
+            background: rgba(0, 102, 255, 0.03);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .reg-avatar {
+            width: 46px; height: 46px;
+            background: rgba(0, 102, 255, 0.12);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Oswald';
+            font-size: 1rem;
+            color: var(--primary);
+            flex-shrink: 0;
+            letter-spacing: 1px;
+        }
+
+        .reg-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .reg-name {
+            font-weight: 700;
+            font-size: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .reg-email {
+            font-size: 0.78rem;
+            color: #555;
+            margin-top: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .reg-tel {
+            font-size: 0.75rem;
+            color: #444;
+            margin-top: 1px;
+        }
+
+        .reg-actions {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .btn-accept, .btn-reject {
+            width: 44px; height: 44px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+            font-size: 1.1rem;
+        }
+
+        .btn-accept {
+            background: rgba(0, 255, 136, 0.08);
+            border: 1px solid rgba(0, 255, 136, 0.25);
+            color: var(--success);
+        }
+        .btn-accept:hover {
+            background: rgba(0, 255, 136, 0.18);
+            box-shadow: 0 0 16px rgba(0, 255, 136, 0.2);
+            transform: scale(1.05);
+        }
+        .btn-accept:disabled { opacity: 0.3; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        .btn-reject {
+            background: rgba(255, 68, 68, 0.08);
+            border: 1px solid rgba(255, 68, 68, 0.25);
+            color: var(--error);
+        }
+        .btn-reject:hover {
+            background: rgba(255, 68, 68, 0.18);
+            box-shadow: 0 0 16px rgba(255, 68, 68, 0.2);
+            transform: scale(1.05);
+        }
+        .btn-reject:disabled { opacity: 0.3; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        /* ─── STATI LISTA ─── */
+        .list-loading, .list-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: #444;
+        }
+        .list-loading .material-symbols-outlined,
+        .list-empty .material-symbols-outlined {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .list-loading p, .list-empty p { font-size: 0.9rem; }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .spin { animation: spin 1s linear infinite; display: inline-block; }
+
+        /* ─── COUNTER BADGE ─── */
+        .counter-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 999px;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 6px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        /* ─── SCAN SECTION ─── */
+        .scan-section {
+            margin-top: 40px;
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+        }
+        .scan-section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #444;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .options-grid { display: grid; gap: 14px; }
 
         .option-card {
             background: var(--glass);
             border: 1px solid var(--border);
-            border-radius: 30px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 20px 24px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
             cursor: pointer;
             transition: var(--transition);
             text-align: left;
@@ -122,26 +302,23 @@
         }
         .option-card::before {
             content: '';
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: radial-gradient(circle at 0% 50%, rgba(0, 102, 255, 0.06), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s;
+            opacity: 0; transition: opacity 0.4s;
         }
         .option-card:hover::before { opacity: 1; }
         .option-card:hover {
             border-color: var(--border-blue);
-            background: rgba(0, 102, 255, 0.05);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 102, 255, 0.12);
+            background: rgba(0, 102, 255, 0.04);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.1);
         }
         .option-icon {
-            width: 60px; height: 60px;
+            width: 48px; height: 48px;
             background: rgba(0, 102, 255, 0.1);
-            border-radius: 20px;
+            border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
-            color: var(--primary);
-            flex-shrink: 0;
+            color: var(--primary); flex-shrink: 0;
             border: 1px solid rgba(0, 102, 255, 0.2);
             transition: var(--transition);
         }
@@ -149,8 +326,8 @@
             background: rgba(0, 102, 255, 0.18);
             box-shadow: 0 0 20px rgba(0, 102, 255, 0.2);
         }
-        .option-info h2 { font-family: 'Oswald'; font-size: 1.4rem; text-transform: uppercase; margin-bottom: 4px; }
-        .option-info p { font-size: 0.85rem; color: #666; line-height: 1.4; }
+        .option-info h2 { font-family: 'Oswald'; font-size: 1.2rem; text-transform: uppercase; margin-bottom: 2px; }
+        .option-info p { font-size: 0.8rem; color: #555; }
 
         /* ─── MODALS ─── */
         .modal {
@@ -165,46 +342,36 @@
             padding: 20px;
         }
         .modal-content {
-            width: 100%;
-            max-width: 400px;
+            width: 100%; max-width: 400px;
             background: rgba(5, 5, 12, 0.98);
             border: 1px solid var(--border-blue);
             border-radius: 40px;
             padding: 40px 30px;
             text-align: center;
             position: relative;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 102, 255, 0.08);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 40px rgba(0,102,255,0.08);
         }
         .modal-title { font-family: 'Oswald'; font-size: 1.6rem; text-transform: uppercase; margin-bottom: 4px; }
         .modal-sub { font-size: 0.75rem; color: #555; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
 
         .close-btn {
             position: absolute; top: 20px; right: 20px;
-            cursor: pointer; color: #444;
-            transition: color 0.2s;
+            cursor: pointer; color: #444; transition: color 0.2s;
         }
         .close-btn:hover { color: var(--primary); }
 
         /* ─── SCANNER ─── */
         .scanner-container {
-            width: 100%;
-            aspect-ratio: 1;
-            background: #000;
-            border-radius: 20px;
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border-blue);
-            box-shadow: inset 0 0 30px rgba(0, 102, 255, 0.05);
+            width: 100%; aspect-ratio: 1;
+            background: #000; border-radius: 20px;
+            margin: 20px 0; position: relative;
+            overflow: hidden; border: 1px solid var(--border-blue);
+            box-shadow: inset 0 0 30px rgba(0,102,255,0.05);
         }
-        /* Corner accents */
-        .scanner-container::before,
-        .scanner-container::after {
-            content: '';
-            position: absolute;
+        .scanner-container::before, .scanner-container::after {
+            content: ''; position: absolute;
             width: 30px; height: 30px;
-            z-index: 10;
-            pointer-events: none;
+            z-index: 10; pointer-events: none;
         }
         .scanner-container::before {
             top: 12px; left: 12px;
@@ -218,11 +385,7 @@
             border-right: 2px solid var(--primary);
             border-radius: 0 0 4px 0;
         }
-        #qrReader {
-            width: 100% !important;
-            border: none !important;
-            background: transparent !important;
-        }
+        #qrReader { width: 100% !important; border: none !important; background: transparent !important; }
         #qrReader video { border-radius: 16px; }
         #qrReader img { display: none; }
         #qrReader__scan_region { background: transparent !important; }
@@ -231,91 +394,61 @@
         /* ─── INPUT ─── */
         .input-field {
             width: 100%;
-            background: rgba(0, 102, 255, 0.04);
+            background: rgba(0,102,255,0.04);
             border: 1px solid var(--border-blue);
             border-radius: 15px;
-            padding: 18px;
-            color: white;
-            font-size: 1rem;
-            text-align: center;
-            font-family: 'Oswald';
-            letter-spacing: 2px;
-            margin: 20px 0;
-            outline: none;
+            padding: 18px; color: white;
+            font-size: 1rem; text-align: center;
+            font-family: 'Oswald'; letter-spacing: 2px;
+            margin: 20px 0; outline: none;
             transition: border-color 0.2s, box-shadow 0.2s;
             text-transform: uppercase;
         }
-        .input-field:focus { 
-            border-color: var(--primary); 
-            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.12);
+        .input-field:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0,102,255,0.12);
         }
         .input-field::placeholder { color: #333; font-size: 0.85rem; letter-spacing: 1px; }
 
         /* ─── BUTTON ─── */
         .btn-action {
-            width: 100%;
-            padding: 18px;
-            background: var(--primary);
-            border: none;
-            border-radius: 15px;
-            color: white;
-            font-family: 'Oswald';
-            font-size: 1.1rem;
+            width: 100%; padding: 18px;
+            background: var(--primary); border: none;
+            border-radius: 15px; color: white;
+            font-family: 'Oswald'; font-size: 1.1rem;
             cursor: pointer;
             transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
         }
-        .btn-action:hover { 
-            opacity: 0.92; 
-            transform: translateY(-1px); 
-            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.35);
+        .btn-action:hover {
+            opacity: 0.92; transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(0,102,255,0.35);
         }
         .btn-action:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
 
         /* ─── RESULT BOXES ─── */
         .result-box {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            border-radius: 15px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            line-height: 1.6;
+            display: none; margin-top: 20px;
+            padding: 20px; border-radius: 15px;
+            font-weight: 700; text-transform: uppercase;
+            font-size: 0.95rem; letter-spacing: 1px; line-height: 1.6;
         }
         .result-box .result-name {
-            font-size: 0.75rem;
-            font-weight: 400;
-            text-transform: none;
-            letter-spacing: 0;
-            opacity: 0.8;
-            margin-top: 6px;
-            font-family: 'Raleway';
+            font-size: 0.75rem; font-weight: 400;
+            text-transform: none; letter-spacing: 0;
+            opacity: 0.8; margin-top: 6px; font-family: 'Raleway';
         }
         .result-box.ok   { background: rgba(0,255,136,0.07); color: var(--success); border: 1px solid rgba(0,255,136,0.4); }
         .result-box.err  { background: rgba(255,68,68,0.07);  color: var(--error);   border: 1px solid rgba(255,68,68,0.4); }
-        .result-box.warn { 
-            background: rgba(0, 102, 255, 0.07);  
-            color: #6699ff;    
-            border: 1px solid rgba(0, 102, 255, 0.3); 
-        }
+        .result-box.warn { background: rgba(0,102,255,0.07);  color: #6699ff;        border: 1px solid rgba(0,102,255,0.3); }
 
         /* ─── GUARD OVERLAY ─── */
         .guard-overlay {
-            display: none;
-            position: fixed; inset: 0;
-            background: var(--bg);
-            z-index: 999;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            text-align: center;
-            padding: 20px;
+            display: none; position: fixed; inset: 0;
+            background: var(--bg); z-index: 999;
+            flex-direction: column; align-items: center;
+            justify-content: center; gap: 16px;
+            text-align: center; padding: 20px;
         }
         .guard-overlay.show { display: flex; }
         .guard-overlay h2 { font-family: 'Oswald'; font-size: 2rem; color: var(--primary); }
@@ -328,12 +461,10 @@
             100% { top: 12%; }
         }
         .scan-line {
-            position: absolute;
-            left: 8%; right: 8%;
+            position: absolute; left: 8%; right: 8%;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            z-index: 9;
-            pointer-events: none;
+            z-index: 9; pointer-events: none;
             animation: scan-line 2.5s ease-in-out infinite;
             box-shadow: 0 0 8px var(--primary);
         }
@@ -344,13 +475,30 @@
             50%       { opacity: 0.4; transform: scale(0.8); }
         }
         .live-dot {
-            display: inline-block;
-            width: 6px; height: 6px;
-            background: var(--primary);
-            border-radius: 50%;
-            margin-right: 6px;
-            vertical-align: middle;
+            display: inline-block; width: 6px; height: 6px;
+            background: var(--primary); border-radius: 50%;
+            margin-right: 6px; vertical-align: middle;
             animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+
+        /* ─── TOAST ─── */
+        .toast {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+            background: rgba(20, 20, 30, 0.95);
+            border: 1px solid var(--border);
+            border-radius: 12px; padding: 14px 24px;
+            font-size: 0.85rem; font-weight: 600;
+            color: #ccc; z-index: 9999;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0; white-space: nowrap;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        .toast.ok   { border-color: rgba(0,255,136,0.4); color: var(--success); }
+        .toast.err  { border-color: rgba(255,68,68,0.4); color: var(--error); }
+
+        @media (max-width: 480px) {
+            .header-section { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .reg-email { display: none; }
         }
     </style>
 </head>
@@ -358,6 +506,7 @@
 
     <div class="ambient-bg"></div>
     <div class="noise"></div>
+    <div class="toast" id="toast"></div>
 
     <!-- GUARD: mostrato se non autenticato -->
     <div class="guard-overlay" id="guardOverlay">
@@ -380,31 +529,52 @@
 
     <main class="container">
         <div class="header-section">
-            <p><span class="live-dot"></span>Staff Control Panel</p>
-            <h1>Scegli Modalità</h1>
+            <div class="header-section-left">
+                <p><span class="live-dot"></span>Staff Control Panel</p>
+                <h1>
+                    Iscrizioni
+                    <span class="counter-badge" id="counterBadge" style="display:none;">0</span>
+                </h1>
+            </div>
+            <button class="btn-scan" onclick="openModal('modalCode')">
+                <span class="material-symbols-outlined" style="font-size: 18px;">qr_code_scanner</span>
+                Scansiona
+            </button>
         </div>
 
-        <div class="options-grid">
-            <div class="option-card" onclick="openModal('modalCamera')">
-                <div class="option-icon">
-                    <span class="material-symbols-outlined" style="font-size: 32px;">qr_code_scanner</span>
-                </div>
-                <div class="option-info">
-                    <h2>Fotocamera</h2>
-                    <p>Scansiona il QR Code del biglietto.</p>
-                </div>
-                <span class="material-symbols-outlined" style="margin-left: auto; color: #333;">chevron_right</span>
+        <!-- LISTA ISCRIZIONI -->
+        <div id="regList" class="reg-list">
+            <div class="list-loading">
+                <span class="material-symbols-outlined spin">progress_activity</span>
+                <p>Caricamento iscrizioni...</p>
             </div>
+        </div>
 
-            <div class="option-card" onclick="openModal('modalCode')">
-                <div class="option-icon">
-                    <span class="material-symbols-outlined" style="font-size: 32px;">keyboard</span>
+        <!-- SEZIONE SCAN -->
+        <div class="scan-section">
+            <div class="scan-section-title">Verifica Biglietti</div>
+            <div class="options-grid">
+                <div class="option-card" onclick="openModal('modalCamera')">
+                    <div class="option-icon">
+                        <span class="material-symbols-outlined" style="font-size: 26px;">photo_camera</span>
+                    </div>
+                    <div class="option-info">
+                        <h2>Fotocamera</h2>
+                        <p>Scansiona il QR Code del biglietto.</p>
+                    </div>
+                    <span class="material-symbols-outlined" style="margin-left: auto; color: #333;">chevron_right</span>
                 </div>
-                <div class="option-info">
-                    <h2>Codice Manuale</h2>
-                    <p>Inserisci il codice UUID del biglietto manualmente.</p>
+
+                <div class="option-card" onclick="openModal('modalCode')">
+                    <div class="option-icon">
+                        <span class="material-symbols-outlined" style="font-size: 26px;">keyboard</span>
+                    </div>
+                    <div class="option-info">
+                        <h2>Codice Manuale</h2>
+                        <p>Inserisci il codice UUID del biglietto.</p>
+                    </div>
+                    <span class="material-symbols-outlined" style="margin-left: auto; color: #333;">chevron_right</span>
                 </div>
-                <span class="material-symbols-outlined" style="margin-left: auto; color: #333;">chevron_right</span>
             </div>
         </div>
     </main>
@@ -459,6 +629,17 @@
     }
 
     // =============================================
+    // TOAST
+    // =============================================
+    function showToast(msg, type = '') {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.className = 'toast show ' + type;
+        clearTimeout(t._timer);
+        t._timer = setTimeout(() => t.className = 'toast', 3000);
+    }
+
+    // =============================================
     // GUARD
     // =============================================
     const session = JSON.parse(sessionStorage.getItem('fuego_session') || 'null');
@@ -474,6 +655,172 @@
         sessionStorage.removeItem('fuego_session');
         window.location.href = 'index.html';
     });
+
+    // =============================================
+    // LISTA ISCRIZIONI
+    // =============================================
+    // NOTA: il trigger Supabase deve creare i ticket con stato='in_attesa'
+    // invece di 'valido', per far apparire le iscrizioni in questa lista.
+
+    async function caricaIscrizioni() {
+        const listEl = document.getElementById('regList');
+
+        const { data, error } = await db
+            .from('ticket')
+            .select('id, codice, utente_id, utenti(id, nome, cognome, email, telefono)')
+            .eq('stato', 'in_attesa');
+
+        if (error) {
+            console.error('Supabase error:', error);
+            listEl.innerHTML = `
+                <div class="list-empty">
+                    <span class="material-symbols-outlined">error</span>
+                    <p>Errore nel caricamento: ${error.message}</p>
+                </div>`;
+            return;
+        }
+
+        console.log('Ticket trovati:', data);
+
+        const counterBadge = document.getElementById('counterBadge');
+        if (!data || data.length === 0) {
+            counterBadge.style.display = 'none';
+            listEl.innerHTML = `
+                <div class="list-empty">
+                    <span class="material-symbols-outlined">inbox</span>
+                    <p>Nessuna iscrizione in attesa</p>
+                </div>`;
+            return;
+        }
+
+        counterBadge.textContent = data.length;
+        counterBadge.style.display = 'inline-flex';
+
+        listEl.innerHTML = '';
+        data.forEach(ticket => {
+            const u = ticket.utenti;
+            if (!u) return;
+            const initials = (u.nome[0] + (u.cognome ? u.cognome[0] : '')).toUpperCase();
+            const nomeCompleto = u.nome + ' ' + (u.cognome || '');
+
+            // Salva dati utente per accesso in accettaIscritto
+            ticketData[ticket.id] = { utente: u, codice: ticket.codice, nome: nomeCompleto };
+
+            const item = document.createElement('div');
+            item.className = 'reg-item';
+            item.id = 'item-' + ticket.id;
+            item.innerHTML = `
+                <div class="reg-avatar">${initials}</div>
+                <div class="reg-info">
+                    <div class="reg-name">${nomeCompleto}</div>
+                    <div class="reg-email">${u.email || ''}</div>
+                    <div class="reg-tel">${u.telefono || ''}</div>
+                </div>
+                <div class="reg-actions">
+                    <button class="btn-accept"
+                        title="Accetta e invia email"
+                        onclick="accettaIscritto('${ticket.id}', this)">
+                        <span class="material-symbols-outlined" style="font-size:20px;">check</span>
+                    </button>
+                    <button class="btn-reject"
+                        title="Rifiuta"
+                        onclick="rifiutaIscritto('${ticket.id}', this)">
+                        <span class="material-symbols-outlined" style="font-size:20px;">close</span>
+                    </button>
+                </div>`;
+            listEl.appendChild(item);
+        });
+    }
+
+    const ticketData = {};
+
+    async function accettaIscritto(ticketId, btnEl) {
+        const td = ticketData[ticketId];
+        if (!td) return;
+        const { utente, nome } = td;
+
+        const item = document.getElementById('item-' + ticketId);
+        const btns = item.querySelectorAll('button');
+        btns.forEach(b => b.disabled = true);
+
+        // 1. Passa il ticket a 'valido' (diventa scannerizzabile all'ingresso)
+        const { error: updateErr } = await db
+            .from('ticket')
+            .update({ stato: 'valido' })
+            .eq('id', ticketId);
+
+        if (updateErr) {
+            showToast('✕ Errore aggiornamento', 'err');
+            btns.forEach(b => b.disabled = false);
+            return;
+        }
+
+        // 2. Chiama dynamic-endpoint (stessa funzione del vecchio trigger)
+        try {
+            const { error: fnErr } = await db.functions.invoke('dynamic-endpoint', {
+                body: { record: utente }
+            });
+            if (fnErr) throw fnErr;
+        } catch (e) {
+            console.warn('Edge function dynamic-endpoint:', e.message);
+        }
+
+        showToast('✓ ' + nome + ' accettato — email inviata', 'ok');
+        rimuoviItem(ticketId);
+    }
+
+    async function rifiutaIscritto(ticketId, btnEl) {
+        const td = ticketData[ticketId];
+        const nome = td ? td.nome : '';
+        const item = document.getElementById('item-' + ticketId);
+        const btns = item.querySelectorAll('button');
+        btns.forEach(b => b.disabled = true);
+
+        const { error } = await db
+            .from('ticket')
+            .update({ stato: 'annullato' })
+            .eq('id', ticketId);
+
+        if (error) {
+            showToast('✕ Errore', 'err');
+            btns.forEach(b => b.disabled = false);
+            return;
+        }
+
+        showToast(nome + ' rifiutato', '');
+        rimuoviItem(ticketId);
+    }
+
+    function rimuoviItem(ticketId) {
+        const item = document.getElementById('item-' + ticketId);
+        if (!item) return;
+
+        item.style.transition = 'opacity 0.3s, transform 0.3s';
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(20px)';
+
+        setTimeout(() => {
+            item.remove();
+            // Aggiorna counter
+            const remaining = document.querySelectorAll('.reg-item').length;
+            const badge = document.getElementById('counterBadge');
+            if (remaining === 0) {
+                badge.style.display = 'none';
+                document.getElementById('regList').innerHTML = `
+                    <div class="list-empty">
+                        <span class="material-symbols-outlined">check_circle</span>
+                        <p>Nessuna iscrizione in attesa</p>
+                    </div>`;
+            } else {
+                badge.textContent = remaining;
+            }
+        }, 300);
+    }
+
+    // Carica iscrizioni all'avvio (solo se autenticato)
+    if (session && Date.now() <= session.expiresAt) {
+        caricaIscrizioni();
+    }
 
     // =============================================
     // VERIFICA BIGLIETTO
@@ -527,12 +874,15 @@
             return;
         }
 
+        if (ticket.stato === 'in_attesa') {
+            mostraRisultato(resultEl, 'err', '✕ Biglietto non ancora approvato');
+            isVerifying = false;
+            return;
+        }
+
         const { error: updateErr } = await db
             .from('ticket')
-            .update({
-                stato: 'usato',
-                scansionato_at: new Date().toISOString()
-            })
+            .update({ stato: 'usato', scansionato_at: new Date().toISOString() })
             .eq('id', ticket.id);
 
         if (updateErr) {
@@ -573,8 +923,6 @@
     // =============================================
     // MODAL
     // =============================================
-    let videoStream = null;
-
     function openModal(id) {
         document.getElementById(id).style.display = 'flex';
         document.getElementById('codeResult').style.display = 'none';
@@ -601,12 +949,7 @@
 
         try {
             html5QrCode = new Html5Qrcode("qrReader");
-
-            const config = {
-                fps: 5,
-                qrbox: { width: 220, height: 220 },
-                aspectRatio: 1.0
-            };
+            const config = { fps: 5, qrbox: { width: 220, height: 220 }, aspectRatio: 1.0 };
 
             await html5QrCode.start(
                 { facingMode: "environment" },
@@ -614,7 +957,6 @@
                 (decodedText) => {
                     const now = Date.now();
                     if (isVerifying || (now - lastScanTime) < SCAN_COOLDOWN) return;
-
                     const codice = decodedText.trim().toUpperCase();
                     if (/^RP-[A-Z0-9]+$/.test(codice)) {
                         lastScanTime = now;
@@ -626,7 +968,6 @@
             );
 
             mostraRisultato(resultEl, 'warn', '⏳ Pronto — inquadra il QR');
-
         } catch (err) {
             console.error(err);
             mostraRisultato(resultEl, 'err', '✕ Errore: ' + err.message);
